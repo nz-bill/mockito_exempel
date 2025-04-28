@@ -1,9 +1,19 @@
 name: My first action
-on: [push]
+on: [push, pull_request]
 jobs:
-  build:
+  on-push:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: print structure
         run: ls -la
+
+  on-PR:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: print hello
+        run: echo "pull request detected!"
+
