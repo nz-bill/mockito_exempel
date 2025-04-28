@@ -1,5 +1,5 @@
 name: My first action
-on: [push, pull-request]
+on: [push, pull_request]
 jobs:
   on-push:
     if: github.event-name == 'push'
